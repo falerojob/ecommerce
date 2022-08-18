@@ -188,3 +188,9 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+form {
+  display: block;
+  margin-top: 0em;
+}
+
