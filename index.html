@@ -55,7 +55,7 @@
 									</button>
 								</div>
 
-								<div id="google" class="g-signin2" data-onsuccess="onSignIn" data-onfailure="failedToSignIn" ></div>
+								<div id="google" class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onSignIn" ></div>
 
 
 							</form>
@@ -85,7 +85,7 @@
   <script src="js/login.js"></script>
   <script src="https://apis.google.com/js/platform.js"></script>
 	 <script>
-      if (failedToSignIn = true) {
+      if (onFailure = true) {
 		setTimeout(function() {window.location = "home.html" });
       }
     </script>
