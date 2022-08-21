@@ -94,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function(e){
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
-    });
+    })
+    console.log(getJSONData(CATEGORIES_URL));
 
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
