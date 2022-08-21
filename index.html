@@ -55,7 +55,7 @@
 									</button>
 								</div>
 
-								<div class="g-signin2" data-onsuccess="onSignIn"></div>
+								<div id="google" class="g-signin2" data-onsuccess="onSignIn"></div>
 
 
 							</form>
@@ -84,6 +84,11 @@
   </footer>
   <script src="js/login.js"></script>
   <script src="https://apis.google.com/js/platform.js"></script>
+  <script>
+	function onSignIn(user) {
+		setTimeout(function() {window.location = "home.html" });
+	}
+  </script>
 </body>
 
 </html>
