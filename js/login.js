@@ -1,7 +1,7 @@
 const ingresar = document.getElementById("button"); //referencio al botón
 
 function error() {
-    alert ("Error. Verifique sus datos y vuelva a intentar").then 
+    alert ("Error. Verifique sus datos y vuelva a intentar")
     setTimeout(function() {window.location = "index.html" });
 }
 
