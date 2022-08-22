@@ -5,10 +5,6 @@ function error() {
     setTimeout(function() {window.location = "index.html" });
 }
 
-function sucess() {
-    window.location.href = "https://falerojob.github.io/ecommerce/index.html"  ;
-}
-
 ingresar.addEventListener("click", () => {    
     let usuario = document.getElementById("usuario"); //referencio al correo que escribió el usuario
     let password = document.getElementById("password");//referencio a la contraseña
