@@ -84,6 +84,15 @@
   </footer>
   <script src="js/login.js"></script>
   <script src="https://apis.google.com/js/platform.js"></script>
+  <script>
+google.auth().onAuthStateChanged(function(user) {
+  if (user) {
+	setTimeout(function() {window.location = "home.html" });
+  } else {
+    // No user is signed in.
+  }
+});
+  </script>
 </body>
 
 </html>
