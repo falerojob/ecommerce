@@ -85,6 +85,7 @@
   <script src="js/login.js"></script>
   <script src="https://apis.google.com/js/platform.js"></script>
   <script>
+	getElementByID("google")
 google.auth().onAuthStateChanged(function(user) {
   if (user) {
 	setTimeout(function() {window.location = "home.html" });
