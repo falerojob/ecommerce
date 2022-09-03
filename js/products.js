@@ -1,4 +1,8 @@
 let productsArray = [];
+let id_productos = localStorage.getItem("catID")
+let btnAsc = document.getElementById("sortAsc")
+let btnDesc = document.getElementById("sortDesc")
+let btnRel =document.getElementById("sortByCount")
 
 function showProductsList(array){
     let htmlContentToAppend = "";
@@ -29,12 +33,42 @@ function showProductsList(array){
 }
 
 document.addEventListener("DOMContentLoaded", function(e){
-        getJSONData("https://japceibal.github.io/emercado-api/cats_products/101.json").then(function(resultObj){
+        let link = "https://japceibal.github.io/emercado-api/cats_products/" + id_productos + ".json"
+        getJSONData(link).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             productsArray = resultObj.data.products;
             showProductsList(productsArray);
             console.log(productsArray)
         }
+        
     });
+
+});
+
+btnDesc.addEventListener("click", function(){
+    productsArray.sort((a, b) => {
+        if(a.cost < b.cost) {return -1;}
+        if(a.cost > b.cost) {return 1;}
+        return 0;
+    });
+    showProductsList(productsArray)
+});
+
+btnAsc.addEventListener("click", function(){
+    productsArray.sort((a, b) => {
+        if(a.cost > b.cost) {return -1;}
+        if(a.cost < b.cost) {return 1;}
+        return 0;
+    });
+    showProductsList(productsArray)
+});
+
+btnRel.addEventListener("click", function(){
+    productsArray.sort((a, b) => {
+        if(a.soldCount > b.soldCount) {return -1;}
+        if(a.soldCount < b.soldCount) {return 1;}
+        return 0;
+    });
+    showProductsList(productsArray)
 });

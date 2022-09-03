@@ -39,3 +39,6 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+let usuario_logeado = localStorage.getItem("text");
+document.getElementById("nombre_usuario").innerHTML = usuario_logeado
