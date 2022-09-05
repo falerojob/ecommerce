@@ -40,5 +40,5 @@ let getJSONData = function(url){
     });
 }
 
-let usuario_logeado = localStorage.getItem("text");
-document.getElementById("nombre_usuario").innerHTML = usuario_logeado
+let usuario_logeado = localStorage.getItem("text");                          //llamamos al nombre de usuario almacenado en el LocalStorage
+document.getElementById("nombre_usuario").innerHTML = usuario_logeado        //y luego lo añadimos al html dentro de un div

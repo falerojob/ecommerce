@@ -27,8 +27,8 @@ ingresar.addEventListener("click", () => {
         error(); 
     }
     else {
-        if (usuario.value) localStorage.setItem("text", usuario.value);
-        setTimeout(function() {window.location = "home.html" });
+        if (usuario.value) localStorage.setItem("text", usuario.value);     //si hay valor escrito en usuario, se lo asigno al localStorage con el ID text
+        setTimeout(function() {window.location = "home.html" });            //para poder llamarlo en el init.js
     }
 
 });

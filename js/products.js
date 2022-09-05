@@ -1,11 +1,13 @@
 let productsArray = [];
-let id_productos = localStorage.getItem("catID")
-let btnAsc = document.getElementById("sortAsc")
-let btnDesc = document.getElementById("sortDesc")
-let btnRel = document.getElementById("sortByCount")
+
+let id_productos = localStorage.getItem("catID")       
+let btnAsc = document.getElementById("sortAsc")        
+let btnDesc = document.getElementById("sortDesc")       
+let btnRel = document.getElementById("sortByCount")     
 
 let btnClean = document.getElementById("clearRangeFilter")
 let btnFilter = document.getElementById("rangeFilterPrice")
+let buscador = document.getElementById("buscador")
 
 let inputMin = document.getElementById("rangeFilterPriceMin")
 let inputMax = document.getElementById("rangeFilterPriceMax")
@@ -14,10 +16,10 @@ function showProductsList(array){
     let htmlContentToAppend = "";
 
     let min;
-    if (inputMin.value !== "" && inputMin.value !== undefined){
-        min = inputMin.value;
-    } else {
-        min = 0;
+    if (inputMin.value !== "" && inputMin.value !== undefined){     //si el valor escrito en mínimo no está vacío
+        min = inputMin.value;                                       //se lo asignamos a la variable min
+    } else {                                                        //sino
+        min = 0;                                                    //no hay mínimo, osea el mínimo es 0
     };
 
     let max;
@@ -30,8 +32,13 @@ function showProductsList(array){
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
 
-        if (product.cost >= min && product.cost <= max){
-        htmlContentToAppend += `
+        let nombre = product.name.toLowerCase();
+        let descripcion = product.description.toLowerCase();
+        const texto_buscador = buscador.value.toLowerCase();
+
+        if(nombre.indexOf(texto_buscador) !== -1 || buscador.value == "" || descripcion.indexOf(texto_buscador) !== -1 ){       //si coincide con el buscador o si el buscador está vacío
+        if (product.cost >= min && product.cost <= max){            //si el costo del producto es mayor al mínimo y menor al máximo, mostramos el producto
+            htmlContentToAppend += `                                    
         <div class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
@@ -40,7 +47,7 @@ function showProductsList(array){
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <div class="mb-1">
-                        <h4>`+ product.name + " - U$S " + product.cost + `</h4> 
+                        <h4>`+ product.name + " - $ " + product.cost + `</h4> 
                         <p> `+ product.description +`</p> 
                         </div>
                         <small class="text-muted">` + product.soldCount + ` vendidos</small> 
@@ -51,7 +58,7 @@ function showProductsList(array){
         </div>
         `
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend; 
-    }
+    }  }
     }
 }
 
@@ -70,12 +77,12 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 btnDesc.addEventListener("click", function(){
-    productsArray.sort((a, b) => {
-        if(a.cost < b.cost) {return -1;}
+    productsArray.sort((a, b) => {                  //ordenamos el array original
+        if(a.cost < b.cost) {return -1;}            //segun los criterios de ordenamiento
         if(a.cost > b.cost) {return 1;}
         return 0;
     });
-    showProductsList(productsArray)
+    showProductsList(productsArray)                 //y luego lo mostramos ordenado
 });
 
 btnAsc.addEventListener("click", function(){
@@ -96,11 +103,15 @@ btnRel.addEventListener("click", function(){
     showProductsList(productsArray)
 });
 
-btnFilter.addEventListener("click", function(){
+buscador.addEventListener("keyup", function(){    
     showProductsList(productsArray)
 });
 
-btnClean.addEventListener("click", function(){
+btnFilter.addEventListener("click", function(){     //con el botón Filtrar se actualiza la página con los datos filtrados pero manteniendo el orden previamente elegido
+    showProductsList(productsArray)
+});
+
+btnClean.addEventListener("click", function(){      //el botón limpiar reestablece los filtros de precio en 0 y luego vuelve a mostrar los productos sin filtrar
     inputMin.value = ""
     inputMax.value = ""
     showProductsList(productsArray)
