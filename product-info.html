@@ -7,12 +7,14 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
 <body>
+ 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -37,12 +39,36 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+ 
+  <main class="pb-5">
+    <div class="list-group" id="prod-info-container">
+
+      <!-- Aquí se insertan los datos de los productos -->
+      
     </div>
+
+    <div id="prod-newComment">
+
+    <h4> Comentar </h4>
+    <h6>Tu opinión:</h6>
+    <textarea id="nuevoComentario" rows="5" cols="80"></textarea>
+    <br><br>
+
+    <h6>Tu puntuación:</h6>
+    <select id="puntuacion">
+      <option value="1">1 estrella</option>
+      <option value="2">2 estrellas</option>
+      <option value="3">3 estrellas</option>
+      <option value="4">4 estrellas</option>
+      <option value="5">5 estrellas</option>
+    </select>
+
+    <br><br>
+
+    <input type="submit" value="Comentar" class="btn btn-primary ms-auto" id="comentar">
+      
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">

@@ -1,6 +1,6 @@
 let productsArray = [];
 
-let id_productos = localStorage.getItem("catID")       
+let id_productos = localStorage.getItem("catID")            //se llama al id de la categoría seleccionada guardado en el localStorage
 let btnAsc = document.getElementById("sortAsc")        
 let btnDesc = document.getElementById("sortDesc")       
 let btnRel = document.getElementById("sortByCount")     
@@ -11,6 +11,7 @@ let buscador = document.getElementById("buscador")
 
 let inputMin = document.getElementById("rangeFilterPriceMin")
 let inputMax = document.getElementById("rangeFilterPriceMax")
+let product = []
 
 function showProductsList(array){
     let htmlContentToAppend = "";
@@ -31,7 +32,6 @@ function showProductsList(array){
 
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
-
         let nombre = product.name.toLowerCase();
         let descripcion = product.description.toLowerCase();
         const texto_buscador = buscador.value.toLowerCase();
@@ -39,7 +39,7 @@ function showProductsList(array){
         if(nombre.indexOf(texto_buscador) !== -1 || buscador.value == "" || descripcion.indexOf(texto_buscador) !== -1 ){       //si coincide con el buscador o si el buscador está vacío
         if (product.cost >= min && product.cost <= max){            //si el costo del producto es mayor al mínimo y menor al máximo, mostramos el producto
             htmlContentToAppend += `                                    
-        <div class="list-group-item list-group-item-action">
+        <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action")>         
             <div class="row">
                 <div class="col-3">
                     <img src="` + product.image + `" alt="product image" class="img-thumbnail">
@@ -62,8 +62,13 @@ function showProductsList(array){
     }
 }
 
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
+
 document.addEventListener("DOMContentLoaded", function(e){
-        let link = "https://japceibal.github.io/emercado-api/cats_products/" + id_productos + ".json"
+        let link = "https://japceibal.github.io/emercado-api/cats_products/" + id_productos + ".json"       //añadir el ID de la categoria a la URL del json
         getJSONData(link).then(function(resultObj){
         if (resultObj.status === "ok")
         {
