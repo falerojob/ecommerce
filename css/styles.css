@@ -207,3 +207,7 @@ div#prod-newComment {
   margin-right: 50px;
 }
 
+figure { display: table; }
+
+figcaption { display: table-caption; caption-side: bottom ; }
+

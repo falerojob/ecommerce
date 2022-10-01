@@ -30,6 +30,34 @@ function showProductInfo(array){
 
                 <h5> Imagenes ilustrativas </h5> 
                 <hr> 
+                <br>
+
+                <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="` + productInfo.images[0] + `" class="d-block w-100" alt="product image 1">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="` + productInfo.images[1] + `" class="d-block w-100" alt="product image 2" >
+                  </div>
+                  <div class="carousel-item">
+                    <img src="` + productInfo.images[2] + `" class="d-block w-100" alt="product image 3" >
+                  </div>
+                  <div class="carousel-item">
+                    <img src="` + productInfo.images[3] + `" class="d-block w-100" alt="product image 4" >
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <br><br>
+
                 <img src="` + productInfo.images[0] + `" alt="product image 1" class="img-thumbnail" height="50" width="300">
                 <img src="` + productInfo.images[1] + `" alt="product image 2" class="img-thumbnail" height="50" width="300">
                 <img src="` + productInfo.images[2] + `" alt="product image 3" class="img-thumbnail" height="50" width="300">
@@ -86,19 +114,41 @@ function showProductInfo(array){
                     htmlContentToAppend +=  `<div class="list-group-item list-group-item-action")>     
                     <strong> `+ comentario.user +`</strong> - ${comentario.dateTime} - ${estrellas}
                     <p> ${comentario.description} </p>
-                    </div>`
+                    </div> `
                     
                 }
             
-                `</div> 
+                ` </div> 
             </div>
 
 
         `;
 
         document.getElementById("prod-info-container").innerHTML = htmlContentToAppend; 
+
+
+        let htmlContentToAppend2 = "";
+     
+        htmlContentToAppend2 += `<div style = "float: left" onclick="setNewProdID(${productInfo.relatedProducts[0].id})"><figure>
+                               <img src="` + productInfo.relatedProducts[0].image + `" alt="product image" class="img-thumbnail" height="250" width="250">
+                                <figcaption> <center> ` + productInfo.relatedProducts[0].name + `  </center> </figcaption>
+                                </figure></div> 
+                                    
+                                <div style = "float: left" onclick="setNewProdID(${productInfo.relatedProducts[1].id})"><figure>
+                               <img src="` + productInfo.relatedProducts[1].image + `" alt="product image" class="img-thumbnail" height="250" width="250">
+                                <figcaption>  <center>` + productInfo.relatedProducts[1].name + `  </center> </figcaption>
+                                </figure></div>
+                                
+                                <br><br><br><br><br><br>
+                           `
+
+        document.getElementById("related_products").innerHTML = htmlContentToAppend2
     }  
-    
+
+    function setNewProdID(id) {
+        localStorage.setItem("prodID", id);
+        window.location = "product-info.html"
+    }
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -122,7 +172,7 @@ setTimeout(() => {
     
         showProductInfo(); 
     })
-  }, "100")
+  }, "500")
 
 
 
@@ -177,7 +227,7 @@ comentar.addEventListener("click", () => {
     CommentToAppend += `<div class="list-group-item list-group-item-action")>     
     <strong> `+ usuario_logeado +`</strong> - ${fecha_actual} - ${estrellas_otorgadas}
     <p> ${commentary} </p>
-    </div>`
+    </div> `
 
     document.getElementById("todos_comentarios").innerHTML += CommentToAppend; 
 

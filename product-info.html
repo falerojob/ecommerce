@@ -11,6 +11,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -33,8 +34,17 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="my-profile.html" id="nombre_usuario"></a>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre_usuario" data-bs-toggle="dropdown" aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="index.html" onclick="localStorage.removeItem('text')">Cerrar sesión</a></li>
+            </ul>
+          </div>
           </li>
+
         </ul>
       </div>
     </div>
@@ -66,8 +76,18 @@
     <br><br>
 
     <input type="submit" value="Comentar" class="btn btn-primary ms-auto" id="comentar">
-      
+    <br><br>
+    <hr> 
+    <br>
+
+    <h4>Productos relacionados</h4>
+
+    <div id="related_products">
+      <!-- Aquí se insertan los productos relacionados -->
     </div>
+
+    </div>
+    
 
   </main>
   <footer class="text-muted">
