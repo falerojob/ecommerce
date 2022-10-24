@@ -31,34 +31,208 @@
           </li>
           <li class="nav-item">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre_usuario" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre_usuario"
+                data-bs-toggle="dropdown" aria-expanded="false">
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
                 <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="index.html" onclick="localStorage.removeItem('text')">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="index.html" onclick="localStorage.removeItem('text')">Cerrar
+                    sesión</a></li>
               </ul>
             </div>
-            </li>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+
+  <main style="margin-left: 20%; margin-right: 20%; margin-top: 3%;">
+
+    <div id="prod_carrito"></div>
+    <hr>
+    <br>
+
+    <div>
+      <h3>Tipo de envío</h3>
+      <br>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Premium 2 a 5 dìas (15%)
+        </label>
       </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Express 5 a 8 dìas (7%)
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Standard 12 a 15 dìas (5%)
+        </label>
+      </div>
+      <br>
+
+    </div>
+
+    <div>
+
+      <h3>Dirección de envío</h3>
+      <br>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Calle</span>
+            <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Numero</span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Esquina</span>
+            <input type="text" class="form-control" aria-label="Esquina" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+      <h3>Costos</h3>
+      <br>
+      
+      <ul class="list-group">
+        <li class="list-group-item"> Subtotal
+        <p><small>Costo unitario del producto por cantidad</small></p>
+        </li>
+
+        <li class="list-group-item">Costo de envío
+        <p><small>Según el tipo de envío.</small></p>
+
+        </li>
+        <li class="list-group-item">Total ($)
+        <br><br>
+        </li>
+        
+
+      </ul>
+
+      <br>
+      <hr>
+      <br>
+      <h3>Forma de pago</h3>
+      <br>
+      <p> No ha seleccionado <a href="" style="margin-left: 20px;"></a> </p> 
+
+      <div class="col-sm-12">
+        <div id="cartel-al-lado">
+        <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal"
+          data-bs-target="#modalPago" id="btnCheck"> Seleccionar</button>
+          <div id="invalidCheckFeedback" class="invalid-feedback">
+            Debe aceptar los términos del servicio.
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="modalPago" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Términos y condiciones del servicio.</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="tarjeta">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Tarjeta de crédito
+                </label>
+              </div>
+              <hr>
+
+              <div class="col-sm-12">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Número de tarjeta</span>
+                  <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1" id="input1_tarjeta">
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Código de seg.</span>
+                  <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1" id="input2_tarjeta">
+                </div>
+              </div>
+
+              <div class="col-8">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Vencimiento (MM/AA)</span>
+                  <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1" id="input3_tarjeta">
+                </div>
+              </div>
+
+              <br><br>
+           
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="input1_transferencia">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Transferencia bancaria
+                </label>
+              </div>
+              <hr>
+
+              <div class="col-sm-12">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Número de cuenta</span>
+                  <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1" id="input1_transferencia">
+                </div>
+              </div>         
+  
+              </div>
+
+              
+
+            </div>
+            <div class="modal-footer">
+              <div class="form-check">
+                <button type="button" class="btn btn-primary">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
     </div>
   </main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
   <div id="spinner-wrapper">

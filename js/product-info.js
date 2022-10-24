@@ -3,7 +3,8 @@ const nuevoComentario = document.getElementById("nuevoComentario")
 const puntuacion = document.getElementById("puntuacion")
 const btnComentar = document.getElementById("comentar")
 
-function showProductInfo(array){
+
+async function showProductInfo(array){
 
     let htmlContentToAppend = "";
     
@@ -11,7 +12,8 @@ function showProductInfo(array){
   
             <div id=div_producto>
 
-                        <h2> `+ productInfo.name + `</h2> 
+                        <h2> `+ productInfo.name + `</h2> <button type="button" class="btn btn-success" id="comprar" onclick="comprar()">Comprar</button>
+
                         <hr> 
 
                         <h5> Precio </h5> 
@@ -143,6 +145,7 @@ function showProductInfo(array){
                            `
 
         document.getElementById("related_products").innerHTML = htmlContentToAppend2
+
     }  
 
     function setNewProdID(id) {
@@ -151,32 +154,34 @@ function showProductInfo(array){
     }
 
 
-document.addEventListener("DOMContentLoaded", function(e){
-    let link_producto = "https://japceibal.github.io/emercado-api/products/" + id_producto + ".json"       
-    let link_comentario =  "https://japceibal.github.io/emercado-api/products_comments/" + id_producto + ".json"
-    getJSONData(link_producto).then(function(resultObj){
-    if (resultObj.status === "ok")
-    {
-        productInfo = resultObj.data;
-        console.log(productInfo)
-    }
-})
-
-setTimeout(() => {
-    getJSONData(link_comentario).then(function(resultObj1){
-        if (resultObj1.status === "ok")
+    document.addEventListener("DOMContentLoaded", function(e){
+        let link_producto = "https://japceibal.github.io/emercado-api/products/" + id_producto + ".json"       
+        let link_comentario =  "https://japceibal.github.io/emercado-api/products_comments/" + id_producto + ".json"
+        getJSONData(link_producto).then(function(resultObj){
+        if (resultObj.status === "ok")
         {
-            productComments = resultObj1.data;
-            console.log(productComments)
+            productInfo = resultObj.data;
+            console.log(productInfo)
         }
-    
-        showProductInfo(); 
     })
-  }, "500")
+    
+    setTimeout(() => {
+        getJSONData(link_comentario).then(function(resultObj1){
+            if (resultObj1.status === "ok")
+            {
+                productComments = resultObj1.data;
+                console.log(productComments)
+            }
+        
+            showProductInfo(); 
+        })
+      }, "500")
+    
+    
+    
+    });
+    
 
-
-
-});
 
 comentar.addEventListener("click", () => {    
     let commentary = nuevoComentario.value;
@@ -230,5 +235,40 @@ comentar.addEventListener("click", () => {
     </div> `
 
     document.getElementById("todos_comentarios").innerHTML += CommentToAppend; 
+    console.log(productInfo)
 
 });
+
+
+function comprar() {
+
+    let numero = localStorage.getItem("numero");
+    if (numero = null){
+        localStorage.setItem("numero", 1)
+        let nuevo_numero = localStorage.getItem("numero");
+        nuevo_numero = nuevo_numero + 1;
+        console.log(nuevo_numero);
+        localStorage.setItem("numero", nuevo_numero);
+        alert(nuevo_numero);
+    }
+        let nuevo_numero = localStorage.getItem("numero");
+        nuevo_numero = nuevo_numero + 1;
+        console.log(nuevo_numero);
+        localStorage.setItem("numero", nuevo_numero);
+        alert(nuevo_numero);
+    let ultimo_numero = localStorage.getItem("numero");
+
+    htmlContentToAppend4 = "";
+    htmlContentToAppend4 +=
+    `   <tr>
+    <td id="imagen"> <img src="` + productInfo.images[0] + `" alt="product image" class="img-thumbnail" height="70" width="70"> </td>
+    <td id="nombre"> ${productInfo.name} </td>
+    <td id="costo"> ` + productInfo.currency + ` ` + productInfo.cost + `</td>
+    <td> <input type="text" size="2" id="cantidad${ultimo_numero}" value="1" onkeyup="cambiarSubtotal()"></td>
+    <td id="subtotal${ultimo_numero}"> ` + productInfo.currency + ` ` + productInfo.cost + ` </td>
+        </tr>    `;
+    
+        localStorage.setItem("nuevo_item", htmlContentToAppend4);
+        window.location = "cart.html"} 
+
+
