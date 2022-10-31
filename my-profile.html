@@ -46,25 +46,104 @@
           </li>
           <li class="nav-item">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre_usuario" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre_usuario"
+                data-bs-toggle="dropdown" aria-expanded="false">
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
                 <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="index.html" onclick="localStorage.removeItem('text')">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="index.html" onclick="localStorage.removeItem('text')">Cerrar
+                    sesión</a></li>
               </ul>
             </div>
-            </li>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+    <form style="margin-left: 25%; margin-right: 25%; margin-top: 3%;">
+      <center>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Primer nombre<b>*</b></span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+              id="numero_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese su primer nombre.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Segundo nombre</span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+              id="numero_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese su segundo nombre.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Primer apellido<b>*</b></span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+              id="numero_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese su primer apellido.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Segundo apellido</span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+              id="numero_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese su segundo apellido.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">E-mail<b>*</b></span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+              id="numero_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese su e-mail.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Teléfono de contacto</span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+              id="numero_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese su teléfono de contacto.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </center>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -73,7 +152,6 @@
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
         2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
