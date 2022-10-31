@@ -31,34 +31,222 @@
           </li>
           <li class="nav-item">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre_usuario" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="nombre_usuario"
+                data-bs-toggle="dropdown" aria-expanded="false">
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
                 <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-                <li><a class="dropdown-item" href="index.html" onclick="localStorage.removeItem('text')">Cerrar sesión</a></li>
+                <li><a class="dropdown-item" href="index.html" onclick="localStorage.removeItem('text')">Cerrar
+                    sesión</a></li>
               </ul>
             </div>
-            </li>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+
+  <main style="margin-left: 20%; margin-right: 20%; margin-top: 3%;">
+
+    <div id="prod_carrito"></div>
+    <hr>
+    <br>
+
+    <div>
+      <h3>Tipo de envío</h3>
+      <br>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="opc_envio" id="opc_premium" onchange="cambiarSubtotal()"
+          checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Premium 2 a 5 días (15%)
+        </label>
       </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="opc_envio" id="opc_express" onchange="cambiarSubtotal()">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Express 5 a 8 días (7%)
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="opc_envio" id="opc_standard" onchange="cambiarSubtotal()">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Standard 12 a 15 días (5%)
+        </label>
+      </div>
+      <br>
+
+    </div>
+
+    <div>
+
+      <h3>Dirección de envío</h3>
+      <br>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Calle</span>
+            <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1"
+              id="nombre_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese la calle.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Numero</span>
+            <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+              id="numero_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese el número.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">Esquina</span>
+            <input type="text" class="form-control" aria-label="Esquina" aria-describedby="basic-addon1"
+              id="esquina_calle">
+            <div class="invalid-feedback">
+              Por favor, ingrese la esquina.
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <br>
+      <hr>
+      <br>
+      <h3>Costos</h3>
+      <br>
+
+      <ul class="list-group">
+        <li class="list-group-item" id="subtotal_general">
+        </li>
+
+        <li class="list-group-item" id="costo_envio">
+        </li>
+
+        <li class="list-group-item" id="costo_total">
+        </li>
+
+
+      </ul>
+
+      <br>
+      <hr>
+      <br style="margin-right: 1px;">
+      <h3>Forma de pago</h3>
+      <br>
+      <p id="medio_pago">No ha seleccionado<a href="" style="margin-left: 20px;"></a> </p>
+
+      <button type="button" class="btn btn-link ps-0" data-bs-toggle="modal" data-bs-target="#modalTerminos"
+        id="btnSeleccionar"> Forma de pago</button>
+      <div id="invalidCheckFeedback" class="invalid-feedback">
+        Debe seleccionar una forma de pago e ingresar datos de envío válidos.
+      </div>
+
+      <div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5">Forma de pago</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="tarjeta">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Tarjeta de crédito
+                </label>
+              </div>
+              <hr>
+
+              <div class="col-sm-12">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Número de tarjeta</span>
+                  <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1"
+                    id="input1_tarjeta" disabled>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Código de seg.</span>
+                  <input type="text" class="form-control" aria-label="Numero" aria-describedby="basic-addon1"
+                    id="input2_tarjeta" disabled>
+                </div>
+              </div>
+
+              <div class="col-8">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Vencimiento (MM/AA)</span>
+                  <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1"
+                    id="input3_tarjeta" disabled>
+                </div>
+              </div>
+
+              <br><br>
+
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="transferencia">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Transferencia bancaria
+                </label>
+              </div>
+              <hr>
+
+              <div class="col-sm-12">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Número de cuenta</span>
+                  <input type="text" class="form-control" aria-label="Calle" aria-describedby="basic-addon1"
+                    id="input1_transferencia" disabled>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <hr>
+    <br>
+
+    <button type="button" class="btn btn-primary" id="btnComprar" onclick="validacion()">Finalizar compra</button>
+
+    <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
+      <p>Se ha efectuado la compra correctamente</p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="alert alert-warning alert-dismissible fade" role="alert" id="alert-warning">
+      <p>ERROR: La cantidad de artículos debe ser mayor a 0</p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
     </div>
   </main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
   <div id="spinner-wrapper">
