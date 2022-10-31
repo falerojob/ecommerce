@@ -27,8 +27,9 @@ ingresar.addEventListener("click", () => {
         error(); 
     }
     else {
-        if (usuario.value) localStorage.setItem("text", usuario.value);     //si hay valor escrito en usuario, se lo asigno al localStorage con el ID text
-        setTimeout(function() {window.location = "home.html" });            //y luego se redirige a la página principal
+        
+        if (usuario.value == "jgoyeni") setTimeout(function() {window.location = "coso.html" });     //si hay valor escrito en usuario, se lo asigno al localStorage con el ID text
+        ;            //y luego se redirige a la página principal
     }
 
 });
